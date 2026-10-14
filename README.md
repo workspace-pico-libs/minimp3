@@ -1,6 +1,20 @@
 minimp3
 ==========
 
+## CMake library
+
+This workspace fork provides a compiled decoder library for Pico projects:
+
+```cmake
+add_subdirectory(libs/minimp3)
+target_link_libraries(your_target PRIVATE minimp3)
+```
+
+Include `minimp3.h` in consumers. The target exports its include directory and
+compiles the implementation once, with `MINIMP3_ONLY_MP3` and `MINIMP3_NO_SIMD`
+for MP3-only decoding without SIMD. Consumers must not define
+`MINIMP3_IMPLEMENTATION`. Upstream headers and license are preserved.
+
 [![Build Status](https://travis-ci.org/lieff/minimp3.svg)](https://travis-ci.org/lieff/minimp3)
 <a href="https://scan.coverity.com/projects/lieff-minimp3">
   <img alt="Coverity Scan Build Status"
